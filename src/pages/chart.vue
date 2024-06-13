@@ -34,7 +34,7 @@
         <img :src="item.image" alt="" class="item-image" />
         <div class="item-details">
           <p class="item-name">{{ item.name }}</p>
-          <p class="item-amount">{{ item.amount }}</p>
+          <p class="item-amount">{{ formatNumber(item.amount) }}원</p>
         </div>
       </li>
     </ul>
@@ -98,49 +98,49 @@ const items = ref([
   {
     image: "./public/food.png",
     name: "식비",
-    amount: "$1200",
+    amount: 1200000,
     backgroundColor: "#FF6384",
     borderColor: "#FF6384",
   },
   {
     image: "./public/traffic.png",
     name: "교통비",
-    amount: "$300",
+    amount: 300000,
     backgroundColor: "#36A2EB",
     borderColor: "#36A2EB",
   },
   {
     image: "./public/gamepad.png",
     name: "여가비",
-    amount: "$1500",
+    amount: 1500000,
     backgroundColor: "#FFCE56",
     borderColor: "#FFCE56",
   },
   {
     image: "./public/dollar.png",
     name: "재테크",
-    amount: "$700",
+    amount: 700000,
     backgroundColor: "#4BC0C0",
     borderColor: "#4BC0C0",
   },
   {
     image: "./public/house.png",
     name: "고정비",
-    amount: "$400",
+    amount: 400000,
     backgroundColor: "#9966FF",
     borderColor: "#9966FF",
   },
   {
     image: "./public/food.png",
     name: "기타",
-    amount: "$500",
+    amount: 500000,
     backgroundColor: "#FF9F40",
     borderColor: "#FF9F40",
   },
 ]);
 
-const totalIncome = ref(5000); // 총 수입 예시값
-const totalExpense = ref(3000); // 총 지출 예시값
+const totalIncome = ref(5000000); // 총 수입 예시값 (500만원)
+const totalExpense = ref(3000000); // 총 지출 예시값 (300만원)
 const filters = ref({ showIncome: true, showExpense: true, showBalance: true }); // 필터 초기값
 
 const year = ref(new Date().getFullYear());
@@ -164,6 +164,10 @@ function nextMonth() {
     month.value = 1;
     year.value += 1;
   }
+}
+
+function formatNumber(value) {
+  return value.toLocaleString();
 }
 </script>
 
